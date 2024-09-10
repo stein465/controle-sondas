@@ -1,0 +1,16 @@
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\configuration\SwaggerConfig.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\ControleDeSondasApplication.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\controller\PlanetaController.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\controller\SondaController.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\dtos\ComandoDTO.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\dtos\SondaDTO.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\Exceptions\DirecaoInvalidaException.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\Exceptions\PosicaoInvalidaException.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\models\enums\Direcao.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\models\Planeta.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\models\Sonda.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\repositories\PlanetaRepository.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\repositories\SondaRepository.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\services\PlanetaService.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\services\SondaService.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\services\ValidacoesService.java

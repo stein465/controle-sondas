@@ -14,10 +14,6 @@ public class PlanetaServiceImp implements PlanetaService {
     @Autowired
     PlanetaRepository planetaRepository;
 
-    public Planeta buscarPlanetaPorId(long id) {
-        return planetaRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Planeta não encontrado com id: " + id));
-    }
 
     public Planeta buscarPlanetaPorNome(String nome) {
 
@@ -25,9 +21,13 @@ public class PlanetaServiceImp implements PlanetaService {
                 .orElseThrow(() -> new NoSuchElementException("Planeta não encontrado com nome: " + nome));
     }
 
-    //TOdo
-    //talvez nem precise desse controller nem do respectivo service
-    //nao será preciso resgatar o planeta
+    public Iterable<Planeta> buscarTodosPlanetas() {
+        Iterable<Planeta> planetas = planetaRepository.findAll();
+        if (!planetas.iterator().hasNext()) {
+            throw new NoSuchElementException("Nenhum planeta encontrado.");
+        }
+        return planetas;
+    }
 
 
 

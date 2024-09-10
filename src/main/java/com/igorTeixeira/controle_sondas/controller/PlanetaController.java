@@ -21,27 +21,12 @@ public class PlanetaController {
 
 
     @GetMapping(path = "/")
-    public ResponseEntity<String> buscarTodos(){
-
-        return ResponseEntity.ok().body("planetaService.buscarTodosPlaneta()");
-    }
-    @GetMapping("/findById")
-    public ResponseEntity<String> buscarPorId(long id){
-        try{
-            Planeta response = planetaService.buscarPlanetaPorId(id);
-            return ResponseEntity.ok().body("" + response);
-        }catch (NoSuchElementException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
-    }
-
-    @GetMapping("/findByName")
-    public ResponseEntity<String> buscarPorNome(String nome){
-        try{
-            Planeta response = planetaService.buscarPlanetaPorNome(nome);
-            return ResponseEntity.ok().body("" + response);
-        }catch (NoSuchElementException e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    public ResponseEntity<Iterable<Planeta>> buscarTodos() {
+        try {
+            Iterable<Planeta> planetas = planetaService.buscarTodosPlanetas();
+            return ResponseEntity.ok(planetas);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 }

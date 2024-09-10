@@ -54,7 +54,7 @@ O projeto usa as seguintes dependências:
 
 - **Spring Boot**: Framework principal para o desenvolvimento da aplicação.
 - **Spring Data JPA**: Para acesso e manipulação de dados no banco de dados.
-- **PostgreSQL** e **MySQL**: Bancos de dados suportados.
+- **MySQL**: Bancos de dados suportado.
 - **Mockito** e **JUnit**: Para testes unitários.
 - **Springdoc OpenAPI**: Para a geração da documentação da API.
 

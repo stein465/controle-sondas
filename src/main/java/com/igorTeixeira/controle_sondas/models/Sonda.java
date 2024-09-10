@@ -8,6 +8,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.JoinColumn;
 import com.igorTeixeira.controle_sondas.models.enums.Direcao;
 
+import java.util.Objects;
+
 @Entity
 public class Sonda {
 
@@ -64,6 +66,19 @@ public class Sonda {
 
     public Planeta getPlaneta() {
         return planeta;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sonda sonda = (Sonda) o;
+        return Objects.equals(id, sonda.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override

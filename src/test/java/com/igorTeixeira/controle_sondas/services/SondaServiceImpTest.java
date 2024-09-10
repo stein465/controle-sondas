@@ -108,10 +108,11 @@ public class SondaServiceImpTest {
 
     @Test
     public void testMoverSondaSucesso() {
-        Sonda sonda = new Sonda(1L, 1, 1, Direcao.NORTE, new Planeta());
+        Planeta planeta = new Planeta(1L,"Marte",5,5);
+        Sonda sonda = new Sonda(1L, 1, 1, Direcao.NORTE, planeta);
         when(sondaRepository.findById(1L)).thenReturn(Optional.of(sonda));
         when(sondaRepository.save(any(Sonda.class))).thenAnswer(invocation -> invocation.getArgument(0));
-        Planeta planeta = new Planeta();
+
         when(planetaServiceImp.buscarPlanetaPorNome(anyString())).thenReturn(planeta);
 
         Sonda sondaMovida = sondaServiceImp.moverSonda(1L, "M");

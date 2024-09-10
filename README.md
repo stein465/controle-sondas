@@ -14,6 +14,8 @@ L -> Virar a sonda para a esquerda (90 graus)
 R -> Virar a sonda para a direita (90 graus)
 A orientação da sonda dentro do plano cartesiano usa uma rosa dos ventos como referência
 
+## Construir e iniciar os contêineres Docker:
+docker-compose up
 
 ## Estrutura do Projeto
 
@@ -90,3 +92,4 @@ O projeto usa as seguintes dependências:
 - **Método**: `DELETE`
 - **Descrição**: Remove uma sonda com base no ID fornecido.
 - **Resposta**: `204 No Content` (se deletada com sucesso) ou `404 Not Found` (se não encontrada).
+

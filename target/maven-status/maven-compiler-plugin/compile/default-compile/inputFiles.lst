@@ -11,6 +11,7 @@ C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\mode
 C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\models\Sonda.java
 C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\repositories\PlanetaRepository.java
 C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\repositories\SondaRepository.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\services\implementation\PlanetaServiceImp.java
+C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\services\implementation\SondaServiceImp.java
 C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\services\PlanetaService.java
 C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\services\SondaService.java
-C:\workspace\controle-sondas\src\main\java\com\igorTeixeira\controle_sondas\services\ValidacoesService.java

@@ -21,7 +21,7 @@ public class Sonda {
     private Direcao direcao;
 
     @ManyToOne
-    @JoinColumn(name = "planeta_id", nullable = false)
+    @JoinColumn(name = "planeta_id", nullable = false, referencedColumnName = "id")
     private Planeta planeta;
 
     public Sonda() {}

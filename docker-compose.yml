@@ -1,11 +1,25 @@
+
 services:
-  mysql:
-    container_name: 'sistema_sondas'
-    image: 'mysql:latest'
-    environment:
-      - 'MYSQL_DATABASE=sistema_sondas'
-      - 'MYSQL_PASSWORD=secret'
-      - 'MYSQL_ROOT_PASSWORD=verysecret'
-      - 'MYSQL_USER=myuser'
+  controle-sondas:
+    image: controle-sondas:latest  # A imagem do seu aplicativo
+    build:
+      context: .  # Diretório onde está seu Dockerfile
     ports:
-      - '3306:3306'
+      - "8080:8080"  # Mapeie a porta que seu app utiliza  (ajuste conforme necessário)
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://controle-sondas-db:3306/sistemas-sondas?allowPublicKeyRetrieval=true&useSSL=false # Nome do host é o nome do serviço do MySQL
+      SPRING_DATASOURCE_USERNAME: root  # Usuário do MySQL
+      SPRING_DATASOURCE_PASSWORD: admin  # Senha do MySQL
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update  # Configuração do JPA
+      SPRING_JPA_SHOW_SQL: true  # Habilita o log SQL
+    depends_on:
+      - controle-sondas-db  # Garante que o banco de dados esteja em execução antes do app
+
+  controle-sondas-db:  # Nome do serviço do banco de dados MySQL
+    image: mysql:latest  # Imagem do MySQL
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin  # Senha do root do MySQL
+      MYSQL_DATABASE: sistemas-sondas  # Nome do banco de dados
+    ports:
+      - "3306:3306"  # Mapeia a porta do MySQL

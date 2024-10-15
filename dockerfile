@@ -1,14 +1,20 @@
 # Use uma imagem base do Java
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-jdk-alpine AS build
 
-# Define o diretório de trabalho
-WORKDIR /app
 
-# Copie o JAR gerado para o diretório de trabalho
-COPY target/*.jar app.jar
+WORKDIR /app/controle-sondas
 
-# Exponha a porta que a aplicação usará
-EXPOSE 8080
+COPY . .
 
-# Comando para executar a aplicação
+RUN ./mvnw clean package -DskipTests
+
+FROM openjdk:17-jdk-alpine
+
+WORKDIR /app/controle-sondas
+
+COPY --from=build /app/controle-sondas/target/*.jar app.jar
+
 ENTRYPOINT ["java", "-jar", "app.jar"]
+
+
+EXPOSE 8080

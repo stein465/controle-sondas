@@ -1,95 +1,66 @@
+
 # Controle de Sondas
 
-Este projeto é uma API REST desenvolvida com Spring Boot que permite o controle de sondas em planetas. A API possibilita criar, mover, buscar e deletar sondas em um plano cartesiano com uma área limitada de 5x5.
+Este projeto é uma API RESTful desenvolvida em Java com Spring Boot para gerenciar e controlar sondas espaciais. A aplicação utiliza um banco de dados MySQL hospedado na AWS RDS e foi containerizada com Docker.
 
-## Objetivo
+## Tecnologias Utilizadas
 
-O objetivo é fornecer uma API que simula o controle de sondas em um planeta. A API gerencia sondas com base em comandos específicos e possibilita interações com múltiplas sondas em diferentes planetas.
+- Java 17
+- Spring Boot
+- JPA (Java Persistence API)
+- MySQL (Amazon RDS)
+- Docker
+- Maven
+- Swagger (para documentação de API)
 
-## Detalhes sobre o funcionamento:
-A sequência de comandos é um conjunto de instruções enviadas da terra para a sonda, onde :
+## Como Rodar o Projeto
 
-M -> Andar para a frente na direção que está 1 posição.
-L -> Virar a sonda para a esquerda (90 graus)
-R -> Virar a sonda para a direita (90 graus)
-A orientação da sonda dentro do plano cartesiano usa uma rosa dos ventos como referência
+### Rodando Localmente
 
-## Construir e iniciar os contêineres Docker:
-docker-compose up
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/stein465/controle-sondas.git
 
-## Estrutura do Projeto
 
-controle-sondas/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── igorTeixeira/
-│   │   │           └── controle_sondas/
-│   │   │               ├── controller/
-│   │   │               │   └── SondaController.java
-│   │   │               ├── dtos/
-│   │   │               │   ├── ComandoDTO.java
-│   │   │               │   └── SondaDTO.java
-│   │   │               ├── models/
-│   │   │               │   ├── Planeta.java
-│   │   │               │   └── Sonda.java
-│   │   │               └── services/
-│   │   │                   └── SondaService.java
-│   │   └── resources/
-│   │       ├── application.properties
-│   │       └── static/
-│   └── test/
-│       └── java/
-│           └── com/
-│               └── igorTeixeira/
-│                   └── controle_sondas/
-│                       └── services/
-│                           └── SondaServiceTest.java
-├── .gitignore
-├── pom.xml
-└── README.md
 
-## Dependências
+### Rodando com Docker
 
-O projeto usa as seguintes dependências:
+Se preferir usar Docker para rodar o projeto, siga os passos abaixo:
 
-- **Spring Boot**: Framework principal para o desenvolvimento da aplicação.
-- **Spring Data JPA**: Para acesso e manipulação de dados no banco de dados.
-- **MySQL**: Bancos de dados suportado.
-- **Mockito** e **JUnit**: Para testes unitários.
-- **Springdoc OpenAPI**: Para a geração da documentação da API.
+1. Certifique-se de ter o **Docker** instalado.
+2. No diretório do projeto, crie uma imagem Docker:
+   ```bash
+   docker build -t controle-sondas .
+   ```
+3. Execute o contêiner:
+   ```bash
+   docker run -d -p 8080:8080 --name controle-sondas-app controle-sondas
+   ```
+4. A aplicação estará disponível em `http://localhost:8080`.
 
-## Endpoints da API
+### Swagger
 
-### Buscar todas as sondas
-- **URL**: `/sonda/`
-- **Método**: `GET`
-- **Descrição**: Retorna uma lista de todas as sondas.
+A documentação da API foi gerada usando **Swagger**. Após iniciar a aplicação, você pode acessar a documentação completa no seguinte endereço:
 
-### Buscar sonda por ID
-- **URL**: `/sonda/{id}`
-- **Método**: `GET`
-- **Descrição**: Retorna uma sonda específica com base no ID fornecido.
-- **Resposta**: `200 OK` (se encontrada) ou `404 Not Found` (se não encontrada).
+- **Swagger UI**: `http://localhost:8080/swagger-ui.html`
 
-### Criar nova sonda
-- **URL**: `/sonda/create`
-- **Método**: `POST`
-- **Descrição**: Cria uma nova sonda com base nos dados fornecidos.
-- **Corpo da Requisição**: `SondaDTO`
-- **Resposta**: `200 OK` (se criada com sucesso) ou `400 Bad Request` (se houver erro).
+Com a Swagger UI, é possível visualizar e testar as rotas disponíveis diretamente pela interface web.
 
-### Mover sonda
-- **URL**: `/sonda/mover/{id}`
-- **Método**: `POST`
-- **Descrição**: Move a sonda para uma nova posição com base nos comandos fornecidos.
-- **Corpo da Requisição**: `ComandoDTO`
-- **Resposta**: `200 OK` (se movida com sucesso) ou `400 Bad Request` (se houver erro).
+## Configuração do Banco de Dados
 
-### Deletar sonda
-- **URL**: `/sonda/{id}`
-- **Método**: `DELETE`
-- **Descrição**: Remove uma sonda com base no ID fornecido.
-- **Resposta**: `204 No Content` (se deletada com sucesso) ou `404 Not Found` (se não encontrada).
+Este projeto utiliza MySQL hospedado na AWS RDS. Certifique-se de configurar as credenciais de acesso ao banco no arquivo `application.properties` ou no contêiner Docker:
 
+
+## Funcionalidades
+
+- Cadastro de sondas
+- Consulta de posições
+- Atualização de posições das sondas
+- Remoção de sondas
+### Alterações feitas:
+1. **Docker**: Instruções detalhadas sobre como rodar o projeto usando Docker (`build` e `run`).
+2. **Swagger**: Informações sobre o Swagger e como acessar a documentação da API.
+3. **Banco de Dados**: Inclusão do uso do MySQL hospedado no RDS e instruções para configurar o acesso ao banco de dados.
+4. **Futuras Melhorias**: Sugestões para melhorias futuras, que também podem ser úteis para impressionar recrutadores.
+
+Agora o README está mais completo e profissional, tornando o projeto mais acessível para quem quer rodá-lo e entender sua estrutura!

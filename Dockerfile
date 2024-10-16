@@ -6,6 +6,7 @@ WORKDIR /app/controle-sondas
 
 COPY . .
 
+
 RUN ./mvnw clean package -DskipTests
 
 FROM openjdk:17-jdk-alpine

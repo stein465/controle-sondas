@@ -1,0 +1,8 @@
+global:
+  scrape_interval: 15s  # Define o intervalo de coleta de métricas
+
+scrape_configs:
+  - job_name: 'controle-sondas'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']  # Verifique se essa porta está correta

@@ -2,8 +2,10 @@ package com.igorTeixeira.controle_sondas.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -36,15 +38,20 @@ public class SecurityConfig {
         return http.build();
     }
 
-    public AuthenticationManagerBuilder  authManager(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
+
+
+    @Bean
+    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+        AuthenticationManagerBuilder authenticationManagerBuilder =
+                http.getSharedObject(AuthenticationManagerBuilder.class);
+
+        authenticationManagerBuilder
+                .inMemoryAuthentication()
                 .withUser("usuario")
-                .password(passwordEncoder().encode("senha"))
+                .password(passwordEncoder().encode("senha"))  // A senha deve ser criptografada
                 .roles("USER");
 
-        logger.debug("In-memory authentication configured for user: usuario");
-
-        return auth;
+        return authenticationManagerBuilder.build();
     }
 
     @Bean

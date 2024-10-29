@@ -26,5 +26,3 @@ deploy-mysql:
     - kubectl apply -f mysql-pv-pvc.yml
     # Aplica o Deployment e Service do MySQL
     - kubectl apply -f controle-sondas-db-deploy.yml
-  only:
-    - main  # Executa apenas na branch principal

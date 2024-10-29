@@ -6,6 +6,10 @@ stages:
 
 variables:
   KUBECONFIG: "/root/.kube/config"
+  GCP_PROJECT_ID: "$csproject-440119"
+  CLUSTER_NAME: "cotrole-sondas2"  # Nome do seu cluster GKE
+  CLUSTER_ZONE: "us-central1-a"     # Zona do seu cluster GKE
+  GCP_SERVICE_ACCOUNT_KEY: $GCP_SERVICE_ACCOUNT_KEY
 
 before_script:
   # Autentica no Google Cloud usando a chave da conta de serviço
